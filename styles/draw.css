@@ -1,0 +1,252 @@
+/* ---------- Floating toolbar (dark, top of canvas) ---------- */
+
+#gpd-toolbar {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+  background: rgba(24, 24, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+  user-select: none;
+}
+
+#gpd-toolbar button {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #d8d8de;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+#gpd-toolbar button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+#gpd-toolbar button.active {
+  background: rgba(105, 101, 219, 0.45);
+  color: #ffffff;
+}
+
+#gpd-toolbar button:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+#gpd-toolbar .gpd-key {
+  position: absolute;
+  right: 3px;
+  bottom: 1px;
+  font-size: 9px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+#gpd-toolbar .gpd-tb-sep {
+  width: 1px;
+  height: 24px;
+  margin: 0 4px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+#gpd-toolbar .gpd-rot45 {
+  transform: rotate(45deg);
+}
+
+/* ---------- Styles panel (dark) ---------- */
+
+#gpd-palette {
+  position: fixed;
+  left: 110px;
+  top: 60px;
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  width: 216px;
+  padding: 6px 12px 12px;
+  background: rgba(24, 24, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  color: #d8d8de;
+  font-family: var(--font-primary, "Signika", sans-serif);
+  font-size: 12px;
+  user-select: none;
+}
+
+#gpd-drag {
+  display: flex;
+  justify-content: center;
+  color: #5b5b68;
+  cursor: grab;
+  padding: 2px 0;
+}
+
+#gpd-drag:active {
+  cursor: grabbing;
+}
+
+#gpd-palette section > label {
+  display: block;
+  font-size: 11px;
+  color: #8f8f9e;
+  margin-bottom: 5px;
+}
+
+#gpd-palette .gpd-btnrow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+#gpd-palette .gpd-vsep {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.16);
+  margin: 0 2px;
+}
+
+/* Color swatches */
+#gpd-palette .gpd-swatch,
+#gpd-palette .gpd-fill {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+#gpd-palette .gpd-swatch.active,
+#gpd-palette .gpd-fill.active {
+  outline: 2px solid #8a87ff;
+  outline-offset: 2px;
+}
+
+#gpd-palette .gpd-transparent {
+  background:
+    conic-gradient(#3a3a46 0 25%, #23232c 0 50%, #3a3a46 0 75%, #23232c 0) 0 0 / 12px 12px;
+}
+
+#gpd-palette .gpd-custom {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+}
+
+/* Option buttons (width, sloppiness, edges, layers) */
+#gpd-palette .gpd-opt {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: none;
+  border-radius: 8px;
+  color: #d8d8de;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+#gpd-palette .gpd-opt:hover {
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+
+#gpd-palette .gpd-opt.active {
+  background: rgba(105, 101, 219, 0.45);
+  color: #ffffff;
+}
+
+#gpd-palette .gpd-opt svg {
+  width: 18px;
+  height: 18px;
+}
+
+#gpd-palette .gpd-opt i {
+  font-size: 13px;
+}
+
+#gpd-palette button:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+/* Custom width */
+#gpd-palette #gpd-width-num {
+  width: 44px;
+  height: 28px;
+  padding: 0 4px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  color: #d8d8de;
+  font-size: 12px;
+  text-align: center;
+}
+
+#gpd-palette #gpd-width-num:focus {
+  border-color: #8a87ff;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Opacity */
+#gpd-palette input[type="range"] {
+  width: 100%;
+  accent-color: #8a87ff;
+}
+
+#gpd-palette .gpd-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #8f8f9e;
+}
+
+/* Foundry-specific toggles */
+#gpd-palette .gpd-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 8px;
+}
+
+#gpd-palette .gpd-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #b9b9c6;
+}
+
+#gpd-palette .gpd-check input {
+  margin: 0;
+  accent-color: #8a87ff;
+}
